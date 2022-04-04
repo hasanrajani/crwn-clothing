@@ -1,14 +1,15 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import Homepage from "./pages/homepage/homepage.component";
-import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import Homepage from "./routes/homepage/homepage.component";
+import SignInAndSignUp from "./routes/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import ShopPage from "./components/shop/shop.component";
+import Contact from "./routes/contact/contact.component";
 import Header from "./components/header/header.component";
 
-import { auth } from "./firebase/firebase.utils";
+import { auth } from "./utils/firebase.utils";
 
 class App extends React.Component {
     constructor() {
@@ -24,8 +25,6 @@ class App extends React.Component {
     componentDidMount() {
         this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
             this.setState({ currentUser: user });
-
-            console.log(user);
         });
     }
 
@@ -35,14 +34,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <Header currentUser={this.state.currentUser} />
-                <Switch>
-                    <Route exact path="/" component={Homepage} />
-                    <Route exact path="/signin" component={SignInAndSignUp} />
-                    <Route path="/shop" component={ShopPage} />
-                </Switch>
-            </div>
+            <Routes>
+                <Route path="/" element={<Header currentUser={this.state.currentUser} />}>
+                    <Route index element={<Homepage />} />
+                    <Route path="signin" element={<SignInAndSignUp />} />
+                    <Route path="shop" element={<ShopPage />} />
+                    <Route path="contact" element={<Contact />} />
+                </Route>
+            </Routes>
         );
     }
 }
