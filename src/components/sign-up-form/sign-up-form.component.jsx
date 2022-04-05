@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase.utils';
 
 import FormInput from '../form-input/form-input.component';
-import CustomButton from '../button/button.component';
+import Button from '../button/button.component';
 
 import './sign-up-form.styles.scss';
 
@@ -89,7 +89,7 @@ const SignUpForm = () => {
         }}
         label="Confirm Password"
         />
-        <CustomButton type="submit">Sign Up</CustomButton>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   )
