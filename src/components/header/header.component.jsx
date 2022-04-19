@@ -1,14 +1,20 @@
-import {React, Fragment} from 'react';
+import {React, Fragment, useContext} from 'react';
 import {Link, Outlet} from 'react-router-dom';
-
-import {auth} from '../../utils/firebase.utils';
 
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 
+import { UserContext } from '../../context/user.context';
+
+import {signOutUser} from '../../utils/firebase.utils';
+
 import './header.styles.scss';
 
-const Header = ({currentUser}) => (
-  <Fragment>
+const Header = () => {
+  const {currentUser} = useContext(UserContext);
+
+  return(
+
+    <Fragment>
     <div className='header'>
       <Link className='logo-container' to="/">
         <Logo className='logo'/>
@@ -18,7 +24,7 @@ const Header = ({currentUser}) => (
         <Link className="option" to="/contact">Contact</Link>
         {
           currentUser?
-          <div className='option' onClick={()=>auth.signOut()}>Sign Out</div>
+          <div className='option' onClick={signOutUser}>Sign Out</div>
           :
           <Link className="option" to="/auth">Sign In</Link>
         }
@@ -26,6 +32,7 @@ const Header = ({currentUser}) => (
     </div>
     <Outlet/>
   </Fragment>
-);
+    );
+  }
 
 export default Header;
