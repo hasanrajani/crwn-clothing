@@ -3,14 +3,21 @@ import {Link, Outlet} from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
+
 import { UserContext } from '../../context/user.context';
+import { CartContext } from '../../context/cart.context';
 
 import {signOutUser} from '../../utils/firebase.utils';
+
 
 import './header.styles.scss';
 
 const Header = () => {
   const {currentUser} = useContext(UserContext);
+  const {isCartOpen} = useContext(CartContext);
 
   return(
 
@@ -28,7 +35,9 @@ const Header = () => {
           :
           <Link className="option" to="/auth">Sign In</Link>
         }
+      <CartIcon/>
       </div>
+      {isCartOpen&&<CartDropdown/>}
     </div>
     <Outlet/>
   </Fragment>

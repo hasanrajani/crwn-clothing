@@ -5,7 +5,7 @@ import "./App.css";
 
 import Homepage from "./routes/homepage/homepage.component";
 import Authentication from "./routes/authentication/authentication.component";
-import ShopPage from "./components/shop/shop.component";
+import Shop from "./routes/shop/shop.component";
 import Contact from "./routes/contact/contact.component";
 import Header from "./components/header/header.component";
 
@@ -38,7 +38,7 @@ class App extends React.Component {
                 <Route path="/" element={<Header currentUser={this.state.currentUser} />}>
                     <Route index element={<Homepage />} />
                     <Route path="auth" element={<Authentication />} />
-                    <Route path="shop" element={<ShopPage />} />
+                    <Route path="shop" element={<Shop />} />
                     <Route path="contact" element={<Contact />} />
                 </Route>
             </Routes>
