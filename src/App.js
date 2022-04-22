@@ -8,6 +8,7 @@ import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Contact from "./routes/contact/contact.component";
 import Header from "./components/header/header.component";
+import Checkout from "./routes/checkout/checkout.component";
 
 import { auth } from "./utils/firebase.utils";
 
@@ -40,6 +41,7 @@ class App extends React.Component {
                     <Route path="auth" element={<Authentication />} />
                     <Route path="shop" element={<Shop />} />
                     <Route path="contact" element={<Contact />} />
+                    <Route path="checkout" element={<Checkout />} />
                 </Route>
             </Routes>
         );
