@@ -39,7 +39,7 @@ class App extends React.Component {
                 <Route path="/" element={<Header currentUser={this.state.currentUser} />}>
                     <Route index element={<Homepage />} />
                     <Route path="auth" element={<Authentication />} />
-                    <Route path="shop" element={<Shop />} />
+                    <Route path="shop/*" element={<Shop />} />
                     <Route path="contact" element={<Contact />} />
                     <Route path="checkout" element={<Checkout />} />
                 </Route>
